@@ -1,0 +1,12 @@
+2023-08-22 16:29:08,782:load.load_data:custom_logging:INFO:Stored data
+2023-08-22 16:29:08,791:__main__:custom_logging:INFO:Pipeline Transformations
+2023-08-22 16:29:09,279:__main__:custom_logging:INFO:Loading data
+2023-08-22 16:29:09,377:__main__:custom_logging:INFO:Split data
+2023-08-22 16:29:09,539:preprocess.preprocess_data:custom_logging:INFO:Transformer OneHotEncoder
+2023-08-22 16:29:09,539:preprocess.preprocess_data:custom_logging:INFO:Transformer FeatureSelector
+2023-08-22 16:29:09,813:preprocess.preprocess_data:custom_logging:INFO:Transformer OneHotEncoder
+2023-08-22 16:29:09,813:preprocess.preprocess_data:custom_logging:INFO:Transformer FeatureSelector
+2023-08-22 16:29:10,224:preprocess.preprocess_data:custom_logging:INFO:Transformer OneHotEncoder
+2023-08-22 16:29:10,224:preprocess.preprocess_data:custom_logging:INFO:Transformer FeatureSelector
+2023-08-22 16:31:29,135:__main__:custom_logging:INFO:Split training and test data
+2023-08-22 16:31:29,201:__main__:custom_logging:INFO:Model saved in ./models/KNeighbors_Classifier_output.pkl
