@@ -55,15 +55,14 @@ In the following link you will find the analysis and exploration of the data:
 
 * Change the directory to the root folder.
 
-* Create a virtual environment with Python 3.10:
+* Create a virtual environment with Python 3.10 (Windows):
 
-Windows
- 1.Run the following command to install the virtual environment: 
+1.Run the following command to install the virtual environment: 
     py3.10 -m venv venv310
 
- 2.Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
+2.Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
 
- 3.Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
+3.Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
     pip install -r requirements.txt
 
 
