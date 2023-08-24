@@ -71,8 +71,8 @@ Windows
 
 To train the Logistic Model:
 
-KPIS: ![KPIS](docs/imgs/kpis_results.png)
-Results: ![Results](docs/imgs/docs/imgs/kpis_results.png)
+KPIS: ![KPIS](docs/imgs/kpis_results.PNG)
+Results: ![Results](docs/imgs/docs/imgs/kpis_results.PNG)
 Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 ## Usage
