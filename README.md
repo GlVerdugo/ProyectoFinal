@@ -1,12 +1,36 @@
-# ITESM MLOPs Project
+# PROJECT: HEART DIASEASE PREDICTION
 
-## Introduction of the project
+## Produced by
+Student: Guadalupe López Verdugo
+ID:A01688491
+##Introduction of the Project
 
-Welcome to the final project focused on MLOps, where the key concepts of ML frameworks and their application will be applied in a practical approach. Throughout this project, the basic concepts and fundamental tools for developing software in the field of MLOps are shown, covering everything from configuring the environment to best practices for creating ML models and deploying them.
+In this project, you will learn about the basics of ML, how to apply it automatically, best practices, and the fundamental tools for developing software in the field of MLOps.
 
-## About the project
+MLOps is a set of practices that combines software development, operations, and data science to automate and manage the entire lifecycle of machine learning models. This can save time and resources, and allow ML teams to focus on more strategic tasks.
 
-The overall goal of this project is to build a robust and reproducible MLOps workflow for developing, training, and deploying machine learning models. A linear regression model will be used as a proof of concept due to its simplicity, and it will be applied to the Titanic data set to predict the probability of survival of a passenger based on certain characteristics.
+## About the Project
+The overall goal of this project is to create a robust and reproducible MLOps workflow for developing, training, and deploying machine learning models. In particular, we will build a KNN classification model to predict heart disease. KNN is a simple but powerful machine learning algorithm that can be used to classify data points into two or more categories. In this project, we will use KNN to classify patients with or without heart disease based on their medical characteristics..
+
+## Explanation of the variables of the dataset
+1. HeartDisease : Respondents that have ever reported having coronary heart disease (CHD) or myocardial infarction (MI).
+2. BMI : Body Mass Index (BMI).
+3. Smoking : Have you smoked at least 100 cigarettes in your entire life? ( The answer Yes or No ).
+4. AlcoholDrinking : Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week).
+5. Stroke : (Ever told) (you had) a stroke?
+6. PhysicalHealth : Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? (0-30 days).
+7. MentalHealth : Thinking about your mental health, for how many days during the past 30 days was your mental health not good? (0-30 days).
+8. DiffWalking : Do you have serious difficulty walking or climbing stairs?
+9. Sex : Are you male or female?
+10. AgeCategory: Fourteen-level age category.
+11. Race : Imputed race/ethnicity value.
+12. Diabetic : (Ever told) (you had) diabetes?
+13. PhysicalActivity : Adults who reported doing physical activity or exercise during the past 30 days other than their regular job.
+14. GenHealth : Would you say that in general your health is...
+15. SleepTime : On average, how many hours of sleep do you get in a 24-hour period?
+16. Asthma : (Ever told) (you had) asthma?
+17. KidneyDisease : Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?
+18. SkinCancer : (Ever told) (you had) skin cancer?
 
 This project covers the following topics:
 
@@ -24,6 +48,7 @@ The objective of this module is to show how a model is served as a web service t
 
 5. **Integration of concepts**  
 This module integrates all the knowledge learned in the previous modules. A demo of Continuous Delivery is implemented.
+
 
 ### Baseline
 
