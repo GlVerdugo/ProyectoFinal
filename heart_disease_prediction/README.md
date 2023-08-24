@@ -67,15 +67,15 @@ Windows
     pip install -r requirements.txt
 
 
-## Model training from a main file
+## Resultados Model training: 
 
-To train the Logistic Model:
-
-KPIS: 
 ![KPIS](docs/imgs/kpis_results.PNG)
-Results: 
+
 ![Results](docs/imgs/results.PNG)
+
 Model saved in ./models/KNeighbors_Classifier_output.pkl
+
+
 
 ## Usage
 
