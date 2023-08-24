@@ -3,7 +3,8 @@
 ## Produced by
 Student: Guadalupe López Verdugo
 ID:A01688491
-##Introduction of the Project
+
+## Introduction of the Project
 
 In this project, you will learn about the basics of ML, how to apply it automatically, best practices, and the fundamental tools for developing software in the field of MLOps.
 
@@ -32,45 +33,21 @@ The overall goal of this project is to create a robust and reproducible MLOps wo
 17. KidneyDisease : Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?
 18. SkinCancer : (Ever told) (you had) skin cancer?
 
-This project covers the following topics:
-
-1. **Key concepts of ML systems**  
-The objective of this module is to give an introduction to MLOps, life cycle and architecture examples is also given.
-
-2. **Basic concepts and tools for software development**  
-This module focuses on introducing the principles of software development that will be used in MLOps. Consider the configuration of the environment, tools to use, and best practices, among other things.
-
-3. **Development of ML models**  
-This module consists of showing the development of an ML model from experimentation in notebooks, and subsequent code refactoring, to the generation of an API to serve the model.
-
-4. **Deployment of ML models**  
-The objective of this module is to show how a model is served as a web service to make predictions.
-
-5. **Integration of concepts**  
-This module integrates all the knowledge learned in the previous modules. A demo of Continuous Delivery is implemented.
-
-
+T
 ### Baseline
 
-This MLOps project is focused on demonstrating the implementation of a complete workflow that ranges from data preparation to exposing a local web service to make predictions using a linear regression model. The chosen dataset is the famous Titanic dataset, which contains information about the Titanic passengers and whether or not they survived the disaster.
+This MLOps project focuses on demonstrating the implementation of a complete workflow ranging from data preparation to exposing a local web service to making predictions using a linear regression model. The chosen data set is heart disease, which contains information on heart disease, health variables are included to predict whether or not the patient might have heart disease.
 
-The purpose is to establish a starting point or "baseline" that will serve as a reference to evaluate future improvements and not only more complex algorithms but more complex components and further deployments.
+The project includes: software development, good practices, REST API and deployment of models using tools such as Docker and Docker Compose, which are essential to be able to bring a machine learning model into a productive environment. The project has focused on implementing the best practices of Continuous Integration, which allows to be able to evolve the code quickly, efficiently and with excellent guidelines.
 
-### Scope
-
-This project is planned to cover the topics seen in the course syllabus, which was designed to include technical capacity levels 0, 1 and a small part of 2 of [Machine Learning operations maturity model - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mlops/mlops-maturity-model).
-
-In other words, knowledge is integrated regarding the learning of good software development practices and Dev Ops (Continuous Integration) applied to the deployment of ML models.
 
 ### Links to experiments like notebooks
 
-You can find the Titanic experiments here:
 
-* [1-exploring-data.ipynb](docs/notebooks/1-exploring-data.ipynb)
-* [2-organizing-ideas.ipynb](docs/notebooks/2-organizing-ideas.ipynb)
-* [3-create-convenient-classes.ipynb](docs/notebooks/3-create-convenient-classes.ipynb)
-* [4_creating_pipeline.ipynb](docs/notebooks/4_creating_pipeline.ipynb)
-* [5_refactored_titanic_notebook.ipynb](docs/notebooks/5_refactored_titanic_notebook.ipynb)
+In the following link you will find the analysis and exploration of the data:
+
+* [ Exploring-data-heartdisease.ipynb](docs/notebooks/heart-disease-prediction.ipynb)
+
 
 ## Setup
 
@@ -78,169 +55,25 @@ You can find the Titanic experiments here:
 
 * Change the directory to the root folder.
 
-* Create a virtual environment with Python 3.10+:
+* Create a virtual environment with Python 3.10:
 
-    ```bash
-    python3.10 -m venv venv
-    ```
+Windows
+ 1.Run the following command to install the virtual environment: 
+    py3.10 -m venv venv310
 
-* Activate the virtual environment
+ 2.Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
 
-    ```bash
-    source venv/bin/activate
-    ```
-
-* Install libraries
-Run the following command to install the libraries/packages.
-
-    ```bash
+ 3.Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
     pip install -r requirements.txt
-    ```
+
 
 ## Model training from a main file
 
-To train the Logistic Model, only run the following code:
+To train the Logistic Model:
 
-```bash
-python itesm_mlops_project/itesm_mlops_project.py
-```
-
-Output:
-
-```bash
-test roc-auc : 0.8152286743603835
-test accuracy: 0.7748091603053435
-Model saved in ./models/logistic_regression_output.pkl
-```
-
-## Execution of unit tests (Pytest)
-
-### Test location
-
-You can find the test location in the [test](tests) folder, and the following tests:
-
-* Test `test_missing_indicator_transform`:  
-Test the `transform` method of the MissingIndicator transformer.
-
-* Test `test_missing_indicator_fit`:  
-Test the `fit` method of the MissingIndicator transformer.
-
-* Test `test_csv_file_existence`:  
-Test case to check if the CSV file exists.
-
-* Test `test_model_existence`:  
-Test to validate the existence of a `.pkl` model file.
-
-### Execution instructions
-
-#### Test `Data Retriever` class
-
-The following test validates the [load_data.py](itesm_mlops_project/load/load_data.py) module, with the `DataRetriever` class.
-
-Follow the next steps to run the test.
-
-* Run in the terminal:
-
-    ```bash
-    pytest ./tests/test_itesm_mlops_project.py::test_csv_file_existence -v
-    ```
-
-* You should see the following data output:
-
-    ```pytest
-    =========================================== test session starts ===========================================
-    platform darwin -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0 -- /Users/carloslme/Documents/GitHub/itesm-mlops-project/venv/bin/python3.10
-    cachedir: .pytest_cache
-    rootdir: /Users/carloslme/Documents/GitHub/itesm-mlops-project
-    plugins: anyio-3.7.1
-    collected 1 item                                                                                          
-
-    tests/test_itesm_mlops_project.py::test_csv_file_existence PASSED                                   [100%]
-
-    ============================================ 1 passed in 1.76s ============================================
-    ```
-
-#### Test `MissingIndicator` class - `transform` method
-
-The following test validates the [preprocess_data.py](itesm_mlops_project/preprocess/preprocess_data.py) module, with the `MissingIndicator` class in the `transform` method.
-
-Follow the next steps to run the test.
-
-* Run in the terminal:
-
-    ```bash
-    pytest ./tests/test_itesm_mlops_project.py::test_missing_indicator_transform -v
-    ```
-
-* You should see the following data output:
-
-    ```pytest
-    ==================================================================== test session starts =====================================================================
-    platform darwin -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0 -- /Users/carloslme/Documents/GitHub/itesm-mlops-project/venv/bin/python3.10
-    cachedir: .pytest_cache
-    rootdir: /Users/carloslme/Documents/GitHub/itesm-mlops-project
-    plugins: anyio-3.7.1
-    collected 1 item                                                                                                                                             
-
-    tests/test_itesm_mlops_project.py::test_missing_indicator_transform PASSED                                                                             [100%]
-
-    ===================================================================== 1 passed in 0.77s ======================================================================
-    ```
-
-#### Test `MissingIndicator` class - `fit` method
-
-The following test validates the [preprocess_data.py](itesm_mlops_project/preprocess/preprocess_data.py) module, with the `MissingIndicator` class in the `fit` method.
-
-Follow the next steps to run the test.
-
-* Run in the terminal:
-
-    ```bash
-    pytest ./tests/test_itesm_mlops_project.py::test_missing_indicator_fit -v
-    ```
-
-* You should see the following data output:
-
-    ```pytest
-    =========================================== test session starts ===========================================
-    platform darwin -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0 -- /Users/carloslme/Documents/GitHub/itesm-mlops-project/venv/bin/python3.10
-    cachedir: .pytest_cache
-    rootdir: /Users/carloslme/Documents/GitHub/itesm-mlops-project
-    plugins: anyio-3.7.1
-    collected 1 item                                                                                          
-
-    tests/test_itesm_mlops_project.py::test_missing_indicator_fit PASSED                                [100%]
-
-    ============================================ 1 passed in 0.73s ============================================
-    ```
-
-#### Test model existence
-
-The following test validates the model's existence after the training.
-
-Follow the next steps to run the test.
-
-* Run in the terminal:
-
-    ```bash
-    pytest ./tests/test_itesm_mlops_project.py::test_model_existence -v -s
-    ```
-
-* You should see the following data output:
-
-    ```pytest
-    =========================================== test session starts ===========================================
-    platform darwin -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0 -- /Users/carloslme/Documents/GitHub/itesm-mlops-project/venv/bin/python3.10
-    cachedir: .pytest_cache
-    rootdir: /Users/carloslme/Documents/GitHub/itesm-mlops-project
-    plugins: anyio-3.7.1
-    collected 1 item                                                                                          
-
-    tests/test_itesm_mlops_project.py::test_model_existence itesm_mlops_project/models/logistic_regression_output.pkl
-    PASSED
-
-    ============================================ 1 passed in 0.79s ============================================
-    ```
+KPIS: ![KPIS](docs/imgs/kpis_results.png)
+Results: ![Results](docs/imgs/docs/imgs/kpis_results.png)
+Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 ## Usage
 
