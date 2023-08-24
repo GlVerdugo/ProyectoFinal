@@ -1,0 +1,26 @@
+2023-08-22 10:49:47,692:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 10:50:00,114:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 10:50:14,198:api.main:main:INFO:Input values: [[0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+2023-08-22 10:50:14,584:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 10:53:39,184:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 16:59:14,105:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 16:59:28,641:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 16:59:45,178:api.main:main:INFO:Input values: [[0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+2023-08-22 16:59:46,045:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 17:01:13,447:api.main:main:INFO:Input values: [[16.0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 16, 1, 0, 1]]
+2023-08-22 17:01:13,474:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 17:01:40,796:api.main:main:INFO:Input values: [[16.0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 16, 1, 0, 1]]
+2023-08-22 17:01:40,813:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 17:01:44,862:api.main:main:INFO:Input values: [[16.0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 16, 1, 0, 1]]
+2023-08-22 17:01:44,882:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 17:01:46,299:api.main:main:INFO:Input values: [[16.0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 16, 1, 0, 1]]
+2023-08-22 17:01:46,324:api.main:main:INFO:Resultado predicción: [0]
+2023-08-22 17:34:43,914:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-22 17:58:49,349:api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-23 13:06:18,767:heart_disease_prediction.api.main:main:INFO:Heart Diasease classifier is all ready to go!
+2023-08-23 13:09:17,672:heart_disease_prediction.api.main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+2023-08-23 13:09:18,234:heart_disease_prediction.api.main:main:INFO:Resultado predicción: [1]
+2023-08-23 13:10:32,309:heart_disease_prediction.api.main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+2023-08-23 13:10:32,317:heart_disease_prediction.api.main:main:INFO:Resultado predicción: [0]
+2023-08-23 13:10:33,453:heart_disease_prediction.api.main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+2023-08-23 13:10:33,460:heart_disease_prediction.api.main:main:INFO:Resultado predicción: [0]
