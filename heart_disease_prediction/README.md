@@ -67,12 +67,19 @@ Windows
     pip install -r requirements.txt
 
 
-## Resultados Model training: 
+## Model training from a main file
 
-![KPIS](docs/imgs/kpis_results.PNG)
+To train the Logistic Model, only run the following code:
 
-![Results](docs/imgs/results.PNG)
+```bash
+    py heart_disease_prediction/main_heart_disease.py.py
+```
 
+Output:
+
+```bash
+test roc-auc : 0.6772915826451495
+test accuracy: 0.9066589533920167
 Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 
@@ -84,7 +91,7 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 * Run the next command to start the Titanic API locally
 
     ```bash
-    uvicorn itesm_mlops_project.api.main:app --reload
+    uvicorn heart_disease_prediction.api.main:app --reload
     ```
 
 #### Checking endpoints
