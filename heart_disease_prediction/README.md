@@ -89,29 +89,39 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 #### Checking endpoints
 
-1. Access `http://127.0.0.1:8000/`, you will see a message like this `"Titanic is all ready to go!"`
+1. Access `http://127.0.0.1:8000/`, you will see a message like this `"Heart Diasease classifier is all ready to go!"`
 2. Access `http://127.0.0.1:8000/docs`, the browser will display something like this:
-![FastAPI Docs](docs/imgs/fast-api-docs.png)
+![FastAPI Docs](docs/imgs/fast-api-docs.PNG)
 3. Try running the following predictions with the endpoint by writing the following values:
     * **Prediction 1**  
         Request body
 
         ```bash
         {
-        "pclass_nan": 0,
-        "age_nan": 0,
-        "sibsp_nan": 0,
-        "parch_nan": 0,
-        "fare_nan": 0,
-        "sex_male": 1,
-        "cabin_Missing": 1,
-        "cabin_rare": 0,
-        "embarked_Q": 1,
-        "embarked_S": 0,
-        "title_Mr": 1,
-        "title_Mrs": 0,
-        "title_rar": 0
-        }
+        "BMI": 20.34,
+        "Smoking": 0,
+        "AlcoholDrinking": 0,
+        "Stroke": 1,
+        "PhysicalHealth": 0,
+        "MentalHealth": 0,
+        "DiffWalking": 0,
+        "Sex": 0,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 0,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 0,
+        "GenHealth_Very_good": 1,
+        "Diabetic": 0,
+        "PhysicalActivity": 0,
+        "SleepTime": 7,
+        "Asthma": 0,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
+        }   
         ```
 
         Response body
@@ -125,20 +135,30 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
         Request body
 
         ```bash
-         {
-            "pclass_nan": 0,
-            "age_nan": 0,
-            "sibsp_nan": 1,
-            "parch_nan": 0,
-            "fare_nan": 0,
-            "sex_male": 0,
-            "cabin_Missing": 0,
-            "cabin_rare": 0,
-            "embarked_Q": 1,
-            "embarked_S": 0,
-            "title_Mr": 1,
-            "title_Mrs": 0,
-            "title_rar": 0
+        {
+        "BMI": 16.6,
+        "Smoking": 1,
+        "AlcoholDrinking":0,
+        "Stroke": 0,
+        "PhysicalHealth": 30,
+        "MentalHealth": 0,
+        "DiffWalking": 1,
+        "Sex": 1,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 1,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 1,
+        "GenHealth_Very_good": 0,
+        "Diabetic": 1,
+        "PhysicalActivity": 0,
+        "SleepTime": 15,
+        "Asthma": 1,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
         }
         ```
 
@@ -153,11 +173,11 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 #### Build the image
 
-* Ensure you are in the `itesm-mlops-project/` directory (root folder).
+* Ensure you are in the `heart_disease_prediction/` directory (root folder).
 * Run the following code to build the image:
 
     ```bash
-    docker build -t titanic-image ./itesm_mlops_project/app/
+    docker-compose -f heart_disease_prediction/docker-compose.yml up --build
     ```
 
 * Inspect the image created by running this command:
@@ -169,16 +189,17 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
     Output:
 
     ```bash
-    REPOSITORY      TAG       IMAGE ID       CREATED       SIZE
-    titanic-image   latest    bb48551cf542   2 hours ago   500MB
+        REPOSITORY                          TAG       IMAGE ID       CREATED          SIZE 
+        heartdisease-image                  latest    dd56ffc1495b   36 minutes ago   544MB
     ```
 
-#### Run Titanic REST API
+#### Run Heart Diasease REST API
 
-1. Run the next command to start the `titanic-image` image in a container.
+1. Run the next command to start the `heartdisease-image ` image in a container.
 
     ```bash
-    docker run -d --rm --name titanic-c -p 8000:8000 titanic-image
+    
+    docker run -d --name heartdisease-c -p 8000:8000 heartdisease-image
     ```
 
 2. Check the container running.
@@ -190,16 +211,16 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
     Output:
 
     ```bash
-    CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          PORTS                    NAMES
-    53d78fb5223f   titanic-image   "uvicorn main:app --…"   19 seconds ago   Up 18 seconds   0.0.0.0:8000->8000/tcp   titanic-c
+    CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                    NAMES
+    172583ccc3cc   heartdisease-image  "uvicorn main:app --…"   55 seconds ago   Up 54 seconds    0.0.0.0:8000->8000/tcp   heartdisease-c
     ```
 
 #### Checking endpoints for app
 
-1. Access `http://127.0.0.1:8000/`, and you will see a message like this `"Titanic classifier is all ready to go!"`
+1. Access `http://127.0.0.1:8000/`, and you will see a message like this `"Heart Diasease classifier is all ready to go!"`
 2. A file called `main_api.log` will be created automatically inside the container. We will inspect it below.
 3. Access `http://127.0.0.1:8000/docs`, the browser will display something like this:
-    ![FastAPI Docs](docs/imgs/fast-api-docs.png)
+    ![FastAPI Docs](docs/imgs/fast-api-docs.PNG)
 
 4. Try running the following predictions with the endpoint by writing the following values:
     * **Prediction 1**  
@@ -207,19 +228,29 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 
         ```bash
         {
-        "pclass_nan": 0,
-        "age_nan": 0,
-        "sibsp_nan": 0,
-        "parch_nan": 0,
-        "fare_nan": 0,
-        "sex_male": 1,
-        "cabin_Missing": 1,
-        "cabin_rare": 0,
-        "embarked_Q": 1,
-        "embarked_S": 0,
-        "title_Mr": 1,
-        "title_Mrs": 0,
-        "title_rar": 0
+        "BMI": 20.34,
+        "Smoking": 0,
+        "AlcoholDrinking": 0,
+        "Stroke": 1,
+        "PhysicalHealth": 0,
+        "MentalHealth": 0,
+        "DiffWalking": 0,
+        "Sex": 0,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 0,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 0,
+        "GenHealth_Very_good": 1,
+        "Diabetic": 0,
+        "PhysicalActivity": 0,
+        "SleepTime": 7,
+        "Asthma": 0,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
         }
         ```
 
@@ -230,26 +261,36 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
         "Resultado predicción: [0]"
         ```
 
-        ![Prediction 1](docs/imgs/prediction-1.png)
+        ![Prediction 1](docs/imgs/prediction-1.PNG)
 
     * **Prediction 2**  
         Request body
 
         ```bash
-         {
-            "pclass_nan": 0,
-            "age_nan": 0,
-            "sibsp_nan": 1,
-            "parch_nan": 0,
-            "fare_nan": 0,
-            "sex_male": 0,
-            "cabin_Missing": 0,
-            "cabin_rare": 0,
-            "embarked_Q": 1,
-            "embarked_S": 0,
-            "title_Mr": 1,
-            "title_Mrs": 0,
-            "title_rar": 0
+        {
+        "BMI": 16.6,
+        "Smoking": 1,
+        "AlcoholDrinking":0,
+        "Stroke": 0,
+        "PhysicalHealth": 30,
+        "MentalHealth": 0,
+        "DiffWalking": 1,
+        "Sex": 1,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 1,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 1,
+        "GenHealth_Very_good": 0,
+        "Diabetic": 1,
+        "PhysicalActivity": 0,
+        "SleepTime": 15,
+        "Asthma": 1,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
         }
         ```
 
@@ -260,20 +301,21 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
         "Resultado predicción: [1]"
         ```
 
-        ![Prediction 2](docs/imgs/prediction-2.png)
+        ![Prediction 2](docs/imgs/prediction-2.PNG)
 
 #### Opening the logs
 
 1. Run the command
 
     ```bash
-    docker exec -it titanic-c bash
+    
+    docker exec -it heartdisease-c bash
     ```
 
     Output:
 
     ```bash
-    root@53d78fb5223f:/# 
+    root@172583ccc3cc:/# 
     ```
 
 2. Check the existing files:
@@ -285,7 +327,8 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
     Output:
 
     ```bash
-    Dockerfile   bin   etc   main.py       ml_models  opt        requirements.txt  sbin  tmp README.md    boot  home  main_api.log  mnt    predictor  root   srv   usr __pycache__  dev   lib   media         models     proc       run     sys   var
+    Dockerfile  __pycache__  boot  etc   lib    lib64   main.py       media      mnt     opt        proc              root  sbin  sys  usr
+    README.md   bin          dev   home  lib32  libx32  main_api.log  ml_models  models  predictor  requirements.txt  run   srv   tmp  var
     ```
 
 3. Open the file `main_api.log` and inspect the logs with this command:
@@ -297,11 +340,22 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
     Output:
 
     ```log
-    2023-08-21 22:27:33,132:main:main:INFO:Titanic classifier is all ready to go!
-    2023-08-21 22:30:18,810:main:main:INFO:Input values: [[0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0]]
-    2023-08-21 22:30:18,811:main:main:INFO:Resultado predicción: [0]
-    2023-08-21 22:31:42,424:main:main:INFO:Input values: [[0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0]]
-    2023-08-21 22:31:42,426:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:37:11,816:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,823:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,013:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,025:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,222:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,230:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,426:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,433:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:38:01,185:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:01,195:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:38:02,908:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:02,915:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:38:03,063:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:03,073:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:47:09,629:main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+    2023-08-23 17:47:09,638:main:main:INFO:Resultado predicción: [0]
 
     ```
 
@@ -314,7 +368,7 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
     Output:
 
     ```bash
-    Successfully copied 2.05kB to .../itesm-mlops-project/.
+    Successfully copied 5.63kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\.
     ```
 
 #### Delete container and image
@@ -322,7 +376,12 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 * Stop the container:
 
     ```bash
-    docker stop titanic-c
+    docker stop heartdisease-c
+    ```
+* Deleted the container:
+
+    ```bash
+    docker rm heartdisease-c
     ```
 
 * Verify it was deleted
@@ -340,13 +399,14 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 * Delete the image
 
     ```bash
-    docker rmi titanic-image
+    docker rmi heartdisease-image
     ```
 
     Output:
 
     ```bash
-    Deleted: sha256:bb48551cf5423bad83617ad54a8194501aebbc8f3ebb767de62862100d4e7fd2
+    Untagged: heartdisease-image:latest
+    Deleted: sha256:49627360dd8205b1c9a360b475e3e0e09cbbf85ed3092b06e0b191368b1f9792
     ```
 
 ### Complete deployment of all containers with Docker Compose and usage
@@ -366,35 +426,35 @@ docker network create AIservice
 * Run the next command to start the App and Frontend APIs
 
     ```bash
-    docker-compose -f itesm_mlops_project/docker-compose.yml up --build
+    docker-compose -f heart_disease_prediction/docker-compose.yml up --build
     ```
 
     You will see something like this:
 
     ```bash
-    Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
-    Creating itesm_mlops_project-app-1 ... done
-    Creating itesm_mlops_project-frontend-1 ... done
-    itesm_mlops_project-app-1       | INFO:     Will watch for changes in these directories: ['/']
-    itesm_mlops_project-app-1       | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-    itesm_mlops_project-app-1       | INFO:     Started reloader process [1] using StatReload
-    itesm_mlops_project-frontend-1  | INFO:     Will watch for changes in these directories: ['/']
-    itesm_mlops_project-frontend-1  | INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
-    itesm_mlops_project-frontend-1  | INFO:     Started reloader process [1] using StatReload
-    itesm_mlops_project-app-1       | INFO:     Started server process [8]
-    itesm_mlops_project-app-1       | INFO:     Waiting for application startup.
-    itesm_mlops_project-app-1       | INFO:     Application startup complete.
-    itesm_mlops_project-frontend-1  | INFO:     Started server process [9]
-    itesm_mlops_project-frontend-1  | INFO:     Waiting for application startup.
-    itesm_mlops_project-frontend-1  | INFO:     Application startup complete.
+    ✔ Container heart_disease_prediction-app-1       Created                                                                                             0.0s 
+    ✔ Container heart_disease_prediction-frontend-1  Created                                                                                             0.0s 
+    Attaching to heart_disease_prediction-app-1, heart_disease_prediction-frontend-1
+    heart_disease_prediction-app-1       | INFO:     Will watch for changes in these directories: ['/']
+    heart_disease_prediction-app-1       | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+    heart_disease_prediction-app-1       | INFO:     Started reloader process [1] using StatReload
+    heart_disease_prediction-frontend-1  | INFO:     Will watch for changes in these directories: ['/']
+    heart_disease_prediction-frontend-1  | INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+    heart_disease_prediction-frontend-1  | INFO:     Started reloader process [1] using StatReload
+    heart_disease_prediction-app-1       | INFO:     Started server process [8]
+    heart_disease_prediction-app-1       | INFO:     Waiting for application startup.
+    heart_disease_prediction-app-1       | INFO:     Application startup complete.
+    heart_disease_prediction-frontend-1  | INFO:     Started server process [8]
+    heart_disease_prediction-frontend-1  | INFO:     Waiting for application startup.
+    heart_disease_prediction-frontend-1  | INFO:     Application startup complete.
     ```
 
 #### Checking endpoints in Frontend
 
-1. Access `http://127.0.0.1:3000/`, and you will see a message like this `"Front-end is all ready to go!"`
+1. Access `http://127.0.0.1:3000/`, and you will see a message like this `"Front-end Heart Diasease classifier is all ready to go!"`
 2. A file called `frontend.log` will be created automatically inside the container. We will inspect it below.
 3. Access `http://127.0.0.1:3000/docs`, the browser will display something like this:
-    ![Frontend Docs](docs/imgs/frontend-1.png)
+    ![Frontend Docs](docs/imgs/frontend-1.PNG)
 
 4. Try running the following predictions with the endpoint `classify` by writing the following values:
     * **Prediction 1**  
@@ -402,19 +462,29 @@ docker network create AIservice
 
         ```bash
         {
-        "pclass_nan": 0,
-        "age_nan": 0,
-        "sibsp_nan": 0,
-        "parch_nan": 0,
-        "fare_nan": 0,
-        "sex_male": 1,
-        "cabin_Missing": 1,
-        "cabin_rare": 0,
-        "embarked_Q": 1,
-        "embarked_S": 0,
-        "title_Mr": 1,
-        "title_Mrs": 0,
-        "title_rar": 0
+        "BMI": 20.34,
+        "Smoking": 0,
+        "AlcoholDrinking": 0,
+        "Stroke": 1,
+        "PhysicalHealth": 0,
+        "MentalHealth": 0,
+        "DiffWalking": 0,
+        "Sex": 0,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 0,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 0,
+        "GenHealth_Very_good": 1,
+        "Diabetic": 0,
+        "PhysicalActivity": 0,
+        "SleepTime": 7,
+        "Asthma": 0,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
         }
         ```
 
@@ -425,26 +495,36 @@ docker network create AIservice
         "Resultado predicción: [0]"
         ```
 
-        ![Frontend Prediction 1](docs/imgs/frontend-prediction-1.png)
+        ![Frontend Prediction 1](docs/imgs/frontend-prediction-1.PNG)
 
     * **Prediction 2**  
         Request body
 
         ```bash
-         {
-            "pclass_nan": 0,
-            "age_nan": 0,
-            "sibsp_nan": 1,
-            "parch_nan": 0,
-            "fare_nan": 0,
-            "sex_male": 0,
-            "cabin_Missing": 0,
-            "cabin_rare": 0,
-            "embarked_Q": 1,
-            "embarked_S": 0,
-            "title_Mr": 1,
-            "title_Mrs": 0,
-            "title_rar": 0
+        {
+        "BMI": 16.6,
+        "Smoking": 1,
+        "AlcoholDrinking":0,
+        "Stroke": 0,
+        "PhysicalHealth": 30,
+        "MentalHealth": 0,
+        "DiffWalking": 1,
+        "Sex": 1,
+        "Race_Asian": 0,
+        "Race_Black": 0,
+        "Race_Hispanic": 1,
+        "Race_Other": 0,
+        "Race_White": 1,
+        "GenHealth_Fair": 0,
+        "GenHealth_Good": 0,
+        "GenHealth_Poor": 1,
+        "GenHealth_Very_good": 0,
+        "Diabetic": 1,
+        "PhysicalActivity": 0,
+        "SleepTime": 15,
+        "Asthma": 1,
+        "KidneyDisease": 0,
+        "SkinCancer": 0
         }
         ```
 
@@ -455,7 +535,7 @@ docker network create AIservice
         "Resultado predicción: [1]"
         ```
 
-        ![Frontend Prediction 2](docs/imgs/frontend-prediction-2.png)
+        ![Frontend Prediction 2](docs/imgs/frontend-prediction-2.PNG)
 
 #### Opening the logs in Frontend
 
@@ -464,24 +544,25 @@ Open a new terminal, and execute the following commands:
 1. Copy the `frontend` logs to the root folder:
 
     ```bash
-    docker cp itesm_mlops_project-frontend-1:/frontend.log .
+    docker cp heart_disease_prediction-frontend-1:/frontend.log .
     ```
 
     Output:
 
     ```bash
-    Successfully copied 3.12kB to .../itesm-mlops-project/.
+    Successfully copied 3.58kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\heart_disease_prediction\.
     ```
 
 2. You can inspect the logs and see something similar to this:
 
     ```bash
-    INFO: 2023-08-21 23:42:00,057|main|Front-end is all ready to go!
-    INFO: 2023-08-21 23:45:04,575|main|Front-end is all ready to go!
-    DEBUG: 2023-08-21 23:45:43,724|main|Incoming input in the front end: {'pclass_nan': 0, 'age_nan': 0, 'sibsp_nan': 0, 'parch_nan': 0, 'fare_nan': 0, 'sex_male': 1, 'cabin_Missing': 1, 'cabin_rare': 0, 'embarked_Q': 1, 'embarked_S': 0, 'title_Mr': 1, 'title_Mrs': 0, 'title_rar': 0}
-    DEBUG: 2023-08-21 23:45:43,742|main|Prediction: "Resultado predicción: [0]"
-    DEBUG: 2023-08-21 23:46:47,024|main|Incoming input in the front end: {'pclass_nan': 0, 'age_nan': 0, 'sibsp_nan': 1, 'parch_nan': 0, 'fare_nan': 0, 'sex_male': 0, 'cabin_Missing': 0, 'cabin_rare': 0, 'embarked_Q': 1, 'embarked_S': 0, 'title_Mr': 1, 'title_Mrs': 0, 'title_rar': 0}
-    DEBUG: 2023-08-21 23:46:47,038|main|Prediction: "Resultado predicción: [1]"
+        INFO: 2023-08-23 19:17:06,257|main|Front-end is all ready to go!
+    DEBUG: 2023-08-23 19:17:34,775|main|Incoming input in the front end: {'BMI': 16.6, 'Smoking': 1, 'AlcoholDrinking': 0, 'Stroke': 0, 'PhysicalHealth': 30, 'MentalHealth': 0, 'DiffWalking': 1, 'Sex': 1, 'Race_Asian': 0, 'Race_Black': 0, 'Race_Hispanic': 1, 'Race_Other': 0, 'Race_White': 1, 'GenHealth_Fair': 0, 'GenHealth_Good': 0, 'GenHealth_Poor': 1, 'GenHealth_Very_good': 0, 'Diabetic': 1, 'PhysicalActivity': 0, 'SleepTime': 15, 'Asthma': 1, 'KidneyDisease': 0, 'SkinCancer': 0}
+    DEBUG: 2023-08-23 19:17:35,379|main|Prediction: "Resultado predicción: [1]"
+    DEBUG: 2023-08-23 19:53:06,589|main|Incoming input in the front end: {'BMI': 20.34, 'Smoking': 0, 'AlcoholDrinking': 0, 'Stroke': 1, 'PhysicalHealth': 0, 'MentalHealth': 0, 'DiffWalking': 0, 'Sex': 0, 'Race_Asian': 0, 'Race_Black': 0, 'Race_Hispanic': 0, 'Race_Other': 0, 'Race_White': 1, 'GenHealth_Fair': 0, 'GenHealth_Good': 0, 'GenHealth_Poor': 0, 'GenHealth_Very_good': 1, 'Diabetic': 0, 'PhysicalActivity': 0, 'SleepTime': 7, 'Asthma': 0, 'KidneyDisease': 0, 'SkinCancer': 0}
+    DEBUG: 2023-08-23 19:53:06,640|main|Prediction: "Resultado predicción: [0]"
+    DEBUG: 2023-08-23 19:53:08,053|main|Incoming input in the front end: {'BMI': 20.34, 'Smoking': 0, 'AlcoholDrinking': 0, 'Stroke': 1, 'PhysicalHealth': 0, 'MentalHealth': 0, 'DiffWalking': 0, 'Sex': 0, 'Race_Asian': 0, 'Race_Black': 0, 'Race_Hispanic': 0, 'Race_Other': 0, 'Race_White': 1, 'GenHealth_Fair': 0, 'GenHealth_Good': 0, 'GenHealth_Poor': 0, 'GenHealth_Very_good': 1, 'Diabetic': 0, 'PhysicalActivity': 0, 'SleepTime': 7, 'Asthma': 0, 'KidneyDisease': 0, 'SkinCancer': 0}
+    DEBUG: 2023-08-23 19:53:08,085|main|Prediction: "Resultado predicción: [0]"
     ```
 
 #### Opening the logs in App
@@ -491,22 +572,64 @@ Open a new terminal, and execute the following commands:
 1. Copy the `app` logs to the root folder:
 
     ```bash
-    docker cp itesm_mlops_project-app-1:/main_api.log .
+    docker cp heart_disease_prediction-app-1:/main_api.log .
     ```
 
     Output:
 
     ```bash
-    Successfully copied 2.56kB to .../itesm-mlops-project/.
+    Successfully copied 6.14kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\heart_disease_prediction\. 
     ```
 
 2. You can inspect the logs and see something similar to this:
 
     ```bash
-    2023-08-21 23:45:43,738:main:main:INFO:Input values: [[0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0]]
-    2023-08-21 23:45:43,740:main:main:INFO:Resultado predicción: [0]
-    2023-08-21 23:46:47,034:main:main:INFO:Input values: [[0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0]]
-    2023-08-21 23:46:47,036:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:15:56,221:main:main:INFO:Heart Diasease classifier is all ready to go!
+    2023-08-23 17:16:08,511:main:main:INFO:Heart Diasease classifier is all ready to go!
+    2023-08-23 17:16:22,204:main:main:INFO:Input values: [[0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    2023-08-23 17:16:22,233:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:25:43,932:main:main:INFO:Heart Diasease classifier is all ready to go!
+    2023-08-23 17:26:23,316:main:main:INFO:Input values: [[25.0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 1]]
+    2023-08-23 17:26:23,323:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:31:36,481:main:main:INFO:Heart Diasease classifier is all ready to go!
+    2023-08-23 17:36:58,526:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:36:58,532:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:10,133:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:10,145:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:10,698:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:10,704:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:10,889:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:10,895:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:11,063:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,069:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:11,232:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,240:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:11,409:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,417:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:11,652:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,659:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:11,816:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:11,823:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,013:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,025:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,222:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,230:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:37:12,426:main:main:INFO:Input values: [[34.3, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:37:12,433:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 17:38:01,185:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:01,195:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:38:02,908:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:02,915:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:38:03,063:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 17:38:03,073:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 17:47:09,629:main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+    2023-08-23 17:47:09,638:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 19:17:35,356:main:main:INFO:Input values: [[16.6, 1, 0, 0, 30, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 15, 1, 0, 0]]
+    2023-08-23 19:17:35,376:main:main:INFO:Resultado predicción: [1]
+    2023-08-23 19:53:06,631:main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+    2023-08-23 19:53:06,638:main:main:INFO:Resultado predicción: [0]
+    2023-08-23 19:53:08,076:main:main:INFO:Input values: [[20.34, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7, 0, 0, 0]]
+    2023-08-23 19:53:08,083:main:main:INFO:Resultado predicción: [0]
     ```
 
 ### Delete the containers with Docker Compose
@@ -514,30 +637,29 @@ Open a new terminal, and execute the following commands:
 1. Stop the containers that have previously been launched with `docker-compose up`.
 
     ```bash
-    docker-compose -f itesm_mlops_project/docker-compose.yml stop 
+    docker-compose -f heart_disease_prediction/docker-compose.yml stop
     ```
 
     Output:
 
     ```bash
-    [+] Stopping 2/2
-    ✔ Container itesm_mlops_project-frontend-1  Stopped                           0.3s 
-    ✔ Container itesm_mlops_project-app-1       Stopped                           0.4s 
+    [+] Stopping 2/2                                                             ~
+    ✔ Container heart_disease_prediction-frontend-1  Stopped 0.9s 
+    ✔ Container heart_disease_prediction-app-1       Stopped 0.9s   
     ```
 
 2. Delete the containers stopped from the stage.
 
     ```bash
-    docker-compose -f itesm_mlops_project/docker-compose.yml rm
+    docker-compose -f heart_disease_prediction/docker-compose.yml rm 
     ```
 
     Output:
 
     ```bash
-    ? Going to remove itesm_mlops_project-frontend-1, itesm_mlops_project-app-1 Yes
-    [+] Removing 2/0
-    ✔ Container itesm_mlops_project-app-1       Removed                           0.0s 
-    ✔ Container itesm_mlops_project-frontend-1  Removed                           0.0s 
+    [+] Removing 2/0                                         ~
+    ✔ Container heart_disease_prediction-app-1       Removed    0.0s 
+    ✔ Container heart_disease_prediction-frontend-1  Removed    0.0s  
     ```
 
 ## Resources
@@ -557,12 +679,5 @@ Here you will find information about this project and more.
 
   * **Development Lead**
 
-    * Carlos Mejia <carloslmescom@gmail.com>
-    * [GitHub Profile](https://github.com/carloslme/)
-    * [LinkedIn](https://www.linkedin.com/in/carloslme/)
-
-* **Contributors**
-
-------------
-
-None yet. Why not be the first?
+    * Guadalupe López <lulover18@gmail.com>
+    * [LinkedIn](https://www.linkedin.com/in/lupita-lópez-verdugo/)
