@@ -20,7 +20,7 @@ logger = custom_logging.CustomLogging(__name__)
 
 
 DATASETS_DIR = './data/'
-URL = 'C:/Users/glverdugo/Documents/Maestria/MLops/Proyecto/heart_disease_prediction/heart_disease_prediction/data/heart_2020_cleanedd.csv'
+URL = 'C:/Users/glverdugo/Documents/Maestria/MLops/ProyectoFinal/heart_disease_prediction/heart_disease_prediction/data/heart_2020_cleanedd.csv'
 
 RETRIEVED_DATA = 'heart_2020_cleanedd.csv'
 
@@ -58,7 +58,7 @@ PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
 if __name__ == "__main__":
     
     print(os.getcwd())
-    os.chdir('C:/Users/glverdugo/Documents/Maestria/MLops/Proyecto/heart_disease_prediction/heart_disease_prediction')
+    os.chdir('C:/Users/glverdugo/Documents/Maestria/MLops/ProyectoFinal/heart_disease_prediction/heart_disease_prediction')
     # Retrieve data
     data_retriever = DataRetriever(URL, DATASETS_DIR)
     result = data_retriever.retrieve_data()

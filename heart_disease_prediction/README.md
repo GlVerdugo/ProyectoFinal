@@ -57,12 +57,12 @@ In the following link you will find the analysis and exploration of the data:
 
 * Create a virtual environment with Python 3.10 (Windows):
 
-1.Run the following command to install the virtual environment: 
+1. Run the following command to install the virtual environment: 
     py3.10 -m venv venv310
 
-2.Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
+2. Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
 
-3.Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
+3. Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
     pip install -r requirements.txt
 
 
@@ -87,7 +87,7 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 
 ### Individual Fastapi and Use Deployment
 
-* Run the next command to start the Titanic API locally
+* Run the next command to start the Hearth disease API locally
 
     ```bash
     uvicorn heart_disease_prediction.api.main:app --reload
@@ -368,13 +368,13 @@ Model saved in ./models/KNeighbors_Classifier_output.pkl
 4. Copy the logs to the root folder:
 
     ```bash
-    docker cp titanic-c:/main_api.log .
+    docker cp heartdisease-c:/main_api.log .
     ```
 
     Output:
 
     ```bash
-    Successfully copied 5.63kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\.
+    Successfully copied 5.63kB to C:\Users\glverdugo\Documents\Maestria\MLops\ProyectoFinal\.
     ```
 
 #### Delete container and image
@@ -556,7 +556,7 @@ Open a new terminal, and execute the following commands:
     Output:
 
     ```bash
-    Successfully copied 3.58kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\heart_disease_prediction\.
+    Successfully copied 3.58kB to C:\Users\glverdugo\Documents\Maestria\MLops\ProyectoFinal\heart_disease_prediction\.
     ```
 
 2. You can inspect the logs and see something similar to this:
@@ -584,7 +584,7 @@ Open a new terminal, and execute the following commands:
     Output:
 
     ```bash
-    Successfully copied 6.14kB to C:\Users\glverdugo\Documents\Maestria\MLops\Proyecto\heart_disease_prediction\. 
+    Successfully copied 6.14kB to C:\Users\glverdugo\Documents\Maestria\MLops\ProyectoFinal\heart_disease_prediction\. 
     ```
 
 2. You can inspect the logs and see something similar to this:

@@ -18,7 +18,7 @@ logger.setLevel(logging.DEBUG) # Configuramos el nivel de logging
 
 formatter = logging.Formatter('%(asctime)s:%(name)s:%(module)s:%(levelname)s:%(message)s') # Creamos el formato
 
-file_handler = logging.FileHandler('/Users/glverdugo/Documents/Maestria/MLops/Proyecto/heart_disease_prediction/heart_disease_prediction/api/main_api.log') # Indicamos el nombre del archivo
+file_handler = logging.FileHandler('/Users/glverdugo/Documents/Maestria/MLops/ProyectoFinal/heart_disease_prediction/heart_disease_prediction/api/main_api.log') # Indicamos el nombre del archivo
 
 file_handler.setFormatter(formatter) # Configuramos el formato
 
@@ -33,7 +33,7 @@ async def healthcheck():
 
 @app.post('/predict')
 def extract_name(heartdisease_features: Heartdisease):
-    predictor = ModelPredictor("/Users/glverdugo/Documents/Maestria/MLops/Proyecto/heart_disease_prediction/heart_disease_prediction/models/KNeighbors_Classifier_output.pkl")
+    predictor = ModelPredictor("/Users/glverdugo/Documents/Maestria/MLops/ProyectoFinal/heart_disease_prediction/heart_disease_prediction/models/KNeighbors_Classifier_output.pkl")
     X = [heartdisease_features.BMI ,
         heartdisease_features.Smoking,
         heartdisease_features.AlcoholDrinking,
