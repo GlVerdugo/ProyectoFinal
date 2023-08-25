@@ -2,7 +2,6 @@
 
 ## Produced by
 Student: Guadalupe López Verdugo
-ID:A01688491
 
 ## Introduction of the Project
 
@@ -33,7 +32,7 @@ The overall goal of this project is to create a robust and reproducible MLOps wo
 17. KidneyDisease : Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?
 18. SkinCancer : (Ever told) (you had) skin cancer?
 
-T
+
 ### Baseline
 
 This MLOps project focuses on demonstrating the implementation of a complete workflow ranging from data preparation to exposing a local web service to making predictions using a linear regression model. The chosen data set is heart disease, which contains information on heart disease, health variables are included to predict whether or not the patient might have heart disease.
