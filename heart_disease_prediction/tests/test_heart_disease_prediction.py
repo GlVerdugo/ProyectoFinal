@@ -27,8 +27,8 @@ def test_csv_file_existence():
     Test case to check if the CSV file exists.
     """
     # Provide the path to your CSV file that needs to be tested
-    os.chdir('Users\glverdugo\Documents\Maestria\MLops\Proyecto\heart_disease_prediction\heart_disease_prediction')
-    csv_file_path = "./data/heart_2020_cleaned.csv"
+    
+    csv_file_path = "C:/Users/glverdugo/Documents/Maestria/MLops/ProyectoFinal/heart_disease_prediction/heart_disease_prediction/data/heart_2020_cleanedd.csv"
     
     DATASETS_DIR = './data/'
     
@@ -42,4 +42,4 @@ def test_csv_file_existence():
 if __name__ == "__main__":
     # Run the test function using Pytest
     pytest.main([__file__])
-
+    
