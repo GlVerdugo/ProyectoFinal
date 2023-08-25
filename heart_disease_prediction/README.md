@@ -679,11 +679,7 @@ Here you will find information about this project and more.
 
 ## Contact information
 
-* **Credits**
-
-    ------------
-
   * **Development Lead**
-
-    * Guadalupe López <lulover18@gmail.com>
+    * Guadalupe López
+    * email: <lulover18@gmail.com>
     * [LinkedIn](https://www.linkedin.com/in/lupita-lópez-verdugo/)
