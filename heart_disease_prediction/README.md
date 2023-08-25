@@ -1,8 +1,5 @@
 # PROJECT: HEART DIASEASE PREDICTION
 
-## Produced by
-Student: Guadalupe López Verdugo
-
 ## Introduction of the Project
 
 In this project, you will learn about the basics of ML, how to apply it automatically, best practices, and the fundamental tools for developing software in the field of MLOps.
