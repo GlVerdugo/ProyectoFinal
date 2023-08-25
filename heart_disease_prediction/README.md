@@ -56,12 +56,13 @@ In the following link you will find the analysis and exploration of the data:
 
 * Create a virtual environment with Python 3.10 (Windows):
 
-1. Run the following command to install the virtual environment: 
+    1. Run the following command to install the virtual environment: 
     py3.10 -m venv venv310
 
-2. Activate the virtual environment: Go to the SCRIPT folder and run the file .\activate:
+    2. Activate the virtual environment: Go to the SCRIPT folder and run the file: 
+    .\activate
 
-3. Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
+    3. Once the virtual environment is activated, you can install the packages necessary for machine learning by running the following command (you need a requierement.txt file):
     pip install -r requirements.txt
 
 
@@ -456,7 +457,7 @@ docker network create AIservice
 
 #### Checking endpoints in Frontend
 
-1. Access `http://127.0.0.1:3000/`, and you will see a message like this `"Front-end Heart Diasease classifier is all ready to go!"`
+1. Access `http://127.0.0.1:3000/`, and you will see a message like this `"Front-end is all ready to go!"`
 2. A file called `frontend.log` will be created automatically inside the container. We will inspect it below.
 3. Access `http://127.0.0.1:3000/docs`, the browser will display something like this:
     ![Frontend Docs](docs/imgs/frontend-1.PNG)
